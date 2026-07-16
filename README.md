@@ -11,7 +11,7 @@ As such, users assume full responsibility for any consequences resulting from th
 
 # Table of Content
 1. [How to use the custom resources here?](#how-to-use-the-resources-here)
-2. [List of Custom Resources](#list-of-custom-resources)
+2. [List of Custom Resource URLs](#list-of-custom-resource-urls)
 3. [How can I contribute to this project?](#how-can-i-contribute-to-this-project)
 4. [Contacts](#contacts)
 
@@ -29,11 +29,11 @@ First, you will need to install a browser extension for override the original re
 
 Find the custom resource urls you want to use in below.
 
-# List of Custom Resources
+# List of Custom Resource URLs
 
 Redirect https://slay.one/css/homeUI.css to
 - https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.0/resource/main/css/homeUI.css
-  - Brought back slayTV.
+  - Brings back slayTV.
 
 # How can I contribute to this project?
 
