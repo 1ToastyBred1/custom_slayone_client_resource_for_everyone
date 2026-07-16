@@ -1,5 +1,5 @@
 /*! For license information please see client-bundle.js.LICENSE.txt */
-console.log("This is from a custom resource")
+console.log("This is from a custom resource");
 
 (() => {
   var __webpack_modules__ = {
