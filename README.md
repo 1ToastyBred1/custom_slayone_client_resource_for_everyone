@@ -32,7 +32,7 @@ Find the custom resource urls you want to use in below.
 # List of Custom Resources
 
 Redirect https://slay.one/css/homeUI.css to
-- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@custom/resource/main/css/homeUI.css
+- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.0/resource/main/css/homeUI.css
   - Brought back slayTV.
 
 # How can I contribute to this project?
