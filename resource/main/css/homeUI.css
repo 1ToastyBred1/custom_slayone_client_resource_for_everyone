@@ -28,7 +28,7 @@
 
 #homeMainWindow {
 	left: 0;
-	background: url("../imgs/mainFrame.png");
+	background: url("https://slay.one/imgs/mainFrame.png");
 	background-size: 100% 100%;
 }
 
@@ -103,10 +103,10 @@
 	background: rgba(18, 13, 10, 0.72);
 	border-style: solid;
 	border-width: 6px 6px 10px 6px;
-	-webkit-border-image: url("../imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
-	-moz-border-image: url("../imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
-	-o-border-image: url("../imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
-	border-image: url("../imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
+	-webkit-border-image: url("https://slay.one/imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
+	-moz-border-image: url("https://slay.one/imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
+	-o-border-image: url("https://slay.one/imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
+	border-image: url("https://slay.one/imgs/main_ui/standard_field_standard.png") 3 3 5 3 repeat;
 	background-clip: padding-box;
 }
 
@@ -258,10 +258,10 @@
 	background-color: #1b1d1a;
 	border-style: solid;
 	border-width: 6px;
-	-webkit-border-image: url("../imgs/resource/bg_resource.png") 3 3 3 3 stretch;
-	-moz-border-image: url("../imgs/resource/bg_resource.png") 3 3 3 3 stretch;
-	-o-border-image: url("../imgs/resource/bg_resource.png") 3 3 3 3 stretch;
-	border-image: url("../imgs/resource/bg_resource.png") 3 3 3 3 stretch;
+	-webkit-border-image: url("https://slay.one/imgs/resource/bg_resource.png") 3 3 3 3 stretch;
+	-moz-border-image: url("https://slay.one/imgs/resource/bg_resource.png") 3 3 3 3 stretch;
+	-o-border-image: url("https://slay.one/imgs/resource/bg_resource.png") 3 3 3 3 stretch;
+	border-image: url("https://slay.one/imgs/resource/bg_resource.png") 3 3 3 3 stretch;
 	box-sizing: border-box;
 	transition: filter 0.08s linear, transform 0.08s linear;
 	image-rendering: pixelated;
@@ -382,21 +382,21 @@
 }
 
 #homeUI .levelHeader {
-    background-image: url("../imgs/home/bg_level_header.png");
+    background-image: url("https://slay.one/imgs/home/bg_level_header.png");
     width: 90px;
     height: 32px;
 }
 
 #homeUI .levelProgressBar {
     left: 85px;
-    background-image: url("../imgs/home/bar_trace.png");
+    background-image: url("https://slay.one/imgs/home/bar_trace.png");
     width: 158px;
     height: 20px;
     padding: 6px;
 }
 
 #homeUI .levelProgressBar .progressIndicator {
-    background-image: url("../imgs/home/bar_thumb.png");
+    background-image: url("https://slay.one/imgs/home/bar_thumb.png");
     width: 158px;
     height: 20px;
     border-radius: 3px;
@@ -422,12 +422,12 @@
 }
 
 #homeUI .homeBottomButton.buttonLobby .labelButton {
-    background-image: url("../imgs/home/btn_lobby.png");
+    background-image: url("https://slay.one/imgs/home/btn_lobby.png");
 }
 
 #homeUI .homeBottomButton.buttonLobby .labelButton .label {
     text-indent: -1000px;
-    background: url("../imgs/home/icon_lobby.png") center no-repeat;
+    background: url("https://slay.one/imgs/home/icon_lobby.png") center no-repeat;
     background-size: 38px 36px;
 }
 
@@ -453,10 +453,10 @@ Container that holds the social media button on the home UI
     border-style: solid;
 
     border-width: 18px 18px 18px 18px;
-    -webkit-border-image: url("../imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
-    -moz-border-image: url("../imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
-    -o-border-image: url("../imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
-    border-image: url("../imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
+    -webkit-border-image: url("https://slay.one/imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
+    -moz-border-image: url("https://slay.one/imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
+    -o-border-image: url("https://slay.one/imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
+    border-image: url("https://slay.one/imgs/main_ui/frame_cornerdot.png") 9 9 9 9 repeat;
     image-rendering: pixelated;
     -webkit-backface-visibility: hidden;
 
@@ -474,27 +474,27 @@ Container that holds the social media button on the home UI
 }
 
 .socialMediaContainer .socialMediaFb {
-    background-image: url("../imgs/main_ui/icon_social_fb.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_fb.png");
 }
 
 .socialMediaContainer .socialMediaTw {
-    background-image: url("../imgs/main_ui/icon_social_tw.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_tw.png");
 }
 
 .socialMediaContainer .socialMediaRd {
-    background-image: url("../imgs/main_ui/icon_social_rd.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_rd.png");
 }
 
 .socialMediaContainer .socialMediaYt {
-    background-image: url("../imgs/main_ui/icon_social_yt.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_yt.png");
 }
 
 .socialMediaContainer .socialMediaDisc {
-    background-image: url("../imgs/main_ui/icon_social_disc.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_disc.png");
 }
 
 .socialMediaContainer .socialMediaWiki {
-    background-image: url("../imgs/main_ui/icon_social_wiki.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_wiki.png");
 }
 
 #homeBottomButtons{
@@ -533,7 +533,7 @@ Container that holds the social media button on the home UI
 }
 
 #homeBottomButtons .signupFB .labelMultiline {
-    background-image: url("../imgs/main_ui/icon_social_fb.png");
+    background-image: url("https://slay.one/imgs/main_ui/icon_social_fb.png");
     background-size: 32px 30px;
     background-position: 22px 8px;
     background-repeat: no-repeat;
@@ -541,7 +541,7 @@ Container that holds the social media button on the home UI
 }
 
 #homeUI .profile {
-    background: url("../imgs/home/bg_profile.png") no-repeat;
+    background: url("https://slay.one/imgs/home/bg_profile.png") no-repeat;
     background-size: 496px 44px;
     width: 496px;
     height: 44px;
