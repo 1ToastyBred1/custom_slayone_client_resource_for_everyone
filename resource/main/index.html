@@ -1,0 +1,1277 @@
+<html>
+	
+	<head>
+		<meta charset="utf-8" />
+		<title>Slay.one</title>
+		<meta name="description" content="_(meta.description)" />
+		<meta name="language" content="en" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        
+        <!-- disable caching -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<!-- / disable caching -->
+
+		<!-- author: https://steamcommunity.com/id/jbs95 -->
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78888548-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-78888548-1');
+		</script>
+
+		
+		<link rel="icon" type="image/png" href="imgs/favicon.png" />
+		<link href="css/style.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/mainUI.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/homeUI.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/navigation.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/needsLogin.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/rooms.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/account.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/options.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/hotkey.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/playerProfile.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/FunUI.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/icons.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/Skin.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/CustomBuild.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/bottomBar.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/changeNick.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/clanJoin.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/clanMain.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/clanShare.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/gameShare.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/goRoom.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/hatTooltip.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/items.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/levelUp.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/miniMap.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/myClan.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/newGame.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/openChest.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/rankInGame.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/resourceBar.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/respawn.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/respawnMini.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/result.css?15552165" rel="stylesheet" type="text/css" />
+		<link href="css/tooltipMap.css?15552165" rel="stylesheet" type="text/css" />
+		
+	</head>
+	
+	<body>
+		
+		<canvas id="canvas" oncontextmenu="return false;"></canvas>
+
+		<div id="mainKillMsg" class="noSelect" oncontextmenu="return false;"></div>
+		<div id="mainKillMsg2" class="noSelect" oncontextmenu="return false;"></div>
+
+		<div id="lpd" style="display: none;">
+			<img />
+			<button>X</button>
+		</div>
+
+		<div id="homeUI">
+			<div id="homeMainWindow">
+				<img src="imgs/mainHeader.png" id="slayOneHeader" />
+				<!--<img src="imgs/mainHeader2.gif" id="slayOneHeader2" />-->
+
+				<div id="homeUIContent"></div>
+				
+				<div id="slayTV" class="slayTV_hover">
+					<div id="slayTV_title"></div>
+					<div id="slayTV_content">
+						<p>_(home.slaytv.latest)</p>
+					</div>
+				</div>
+			</div>
+			<div id="globalChatWindow">
+				<div id="globalChatTabs">
+					<button id="globalChatTabGlobal" class="globalChatTab active" type="button">_(home.chat.tab.global)</button>
+					<button id="globalChatTabClan" class="globalChatTab" type="button">_(home.chat.tab.clan)</button>
+					<div id="friendChatTabs"></div>
+				</div>
+				<div id="globalChatMessages"></div>
+				<div id="globalChatInputWrapper" class="standardField standardFieldSkinStandard">
+					<form id="globalChatForm" autocomplete="off">
+						<input type="text" name="username" autocomplete="username" tabindex="-1" aria-hidden="true" class="chatAutofillDecoy" />
+						<input type="password" name="password" autocomplete="current-password" tabindex="-1" aria-hidden="true" class="chatAutofillDecoy" />
+						<input type="text" id="globalChatInput" name="slay-chat-message" maxlength="140" placeholder="_(home.chat.input.placeholder.locked)" autocomplete="off" aria-autocomplete="none" autocapitalize="off" autocorrect="off" spellcheck="false" readonly />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Ressource Bar-->
+		<div id="resourceBar" style="display: none;">
+			<div class="resource gem">
+				<div class="icon"></div>
+				<div class="value"></div>
+			</div>
+			<div class="resource gold">
+				<div class="icon"></div>
+				<div class="value"></div>
+			</div>
+			<ul id="resourceBar_chestsList" class="F-List"></ul>
+		</div>
+
+		<!--Bottom Bar-->
+		<div id="bottomBar" class="hide" style="display: none;">
+			<a id="imprintLink" class="withClickSound">_(home.footer.imprint.label)</a>
+			<a id="termsLink" class="withClickSound">_(home.footer.terms.label)</a>
+			<a id="privacyLink" class="withClickSound">_(home.footer.privacy.label)</a>
+			<a class="withClickSound" href="http://iogames.space/" target="_blank">.IO Games</a>
+			<!--<a class="withClickSound" href="https://one.sigmally.com/" target="_blank">Agario</a>-->
+		</div>
+
+		<div id="chatInputDiv" class="noSelect">
+			<input type="text" id="chatInput" maxlength="140" />
+		</div>
+
+		<div id="chatDisplayDiv" class="noSelect" oncontextmenu="return false;"></div>
+
+		<div id="killsDisplayDiv" class="noSelect" oncontextmenu="return false;"></div>
+
+		<div id="chatlog" class="noSelect" oncontextmenu="return false;">
+			<div id='chatloginner'></div>
+		</div>
+
+		<div id="optionsWindow" data-noclick="yes"></div>
+		
+		<div id="unlockDiv" data-noclick="yes">
+			<div id="unlockDivInner"></div>
+		</div>
+
+		<div id="ladderSearchCountDiv" style="display: none;" data-noclick="yes"></div>
+
+		<!--Lvl Up-->
+		<div class="F-popUpLayer top" id="levelUpBG" style="display: none;">
+			<div class="modal"></div>
+			<div id="levelUp" class="F-Window light" data-modal="true">
+				<div class="title ribbon">_(levelUp.title)</div>
+				<div class="content">
+					<div class="badge">32</div>
+					<div class="figure"></div>
+					<div class="congrats">
+						<p>_(levelUp.congrats)</p>
+					</div>
+					<fieldset class="rewardArea">
+						<legend>_(levelUp.reward.title)</legend>
+						<ul id="levelUp_rewardList" class="F-List"></ul>
+					</fieldset>
+					<div class="F-Button norm ok withClickSound">
+						<span class="label">_(levelUp.button.OK)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button norm blue share withClickSound">
+						<span class="label">_(levelUp.button.share)</span>
+						<div class="hover"></div>
+					</div>
+				</div>
+				<div class="bg"></div>
+			</div>
+		</div>
+
+		<!--Open Chest-->
+		<div class="F-popUpLayer basic" id="openChestBG" style="display: none;">
+			<div id="openChest" data-modal="false" class="chest_0">
+				<div class="center">
+					<ul class="rewards">
+						<li class="reward gold">
+							<div class="frame">
+								<div class="icon"></div>
+								<span class="label">_(openChest.label.gold)</span>
+							</div>
+							<div class="summary">
+								<h3>_(openChest.label.gold)</h3>
+								<div class="amount">1000</div>
+								<div class="yoursLabel">_(openChest.label.gold.yours)</div>
+								<div class="yoursAmount">500000</div>
+							</div>
+						</li>
+					</ul>
+					<div class="chest_ani">
+						<div class="chest_figure"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--<div id="floatTipsLayer"></div>-->
+		
+		<div id="ladderDiv" style="display: none;">
+			<div id="ladderDivInner1">_(ladder.search.title)</div>
+			<div id="ladderDivInner2"></div>
+			<div id="ladderDivInner3">_(ladder.search.opponent)</div>
+			<div id="ladderDivInner4">_(ladder.search.cancel)</div>
+		</div>
+
+		<!--Minimap-->
+		<div id="minimap" style="display: none;">
+			<canvas width="150" height="150" id="canvasMinimap"></canvas>
+			<ul id="miniMap_list" class="F-List">
+				<li class="F-ItemRenderer" id="rank1">
+					<span class="rank">1</span>
+					<span class="name"></span>
+					<span class="score">0</span>
+				</li>
+				<li class="F-ItemRenderer" id="rank2">
+					<span class="rank">2</span>
+					<span class="name"></span>
+					<span class="score">0</span>
+				</li>
+				<li class="F-ItemRenderer" id="rank3">
+					<span class="rank">3</span>
+					<span class="name"></span>
+					<span class="score">0</span>
+				</li>
+			</ul>
+		</div>
+
+		<!--Result-->
+		<div class="F-popUpLayer basic" id="resultBG" style="display: none;">
+			<div class="modal"></div>
+			<div id="result" data-modal="true">
+				<h2>_(result.title)</h2>
+				<div class="gameInfo reward">
+					<div class="rankInfo">_(result.desc.rank)</div>
+					<div class="score">
+						<span class="label">_(result.label.score)</span>
+						<span class="value">0</span>
+					</div>
+					<div class="souls" style="display: none;">
+						<span class="label">_(result.label.souls)</span>
+						<span class="value">1200</span>
+					</div>
+					<div class="kills">
+						<span class="label">_(result.label.kill)</span>
+						<span class="value">0</span>
+					</div>
+					<div class="deaths">
+						<span class="label">_(result.label.deaths)</span>
+						<span class="value">0</span>
+					</div>
+					<div class="gold" data-tooltip-data="_(result.tooltip.gold)">
+						<span class="label">_(result.label.gold)</span>
+						<span class="value">0</span>
+					</div>
+				</div>
+				<div class="chest reward noChest">
+					<h3>_(result.reward.title)</h3>
+					<img class="icon center">
+					<div class="name"></div>
+					<div class="noChest">_(result.reward.noChest)</div>
+				</div>
+				<fieldset class="accountInfo">
+					<legend>_(result.label.level)</legend>
+					<div class="levelInfo">
+						<span class="current">Lv59</span>
+						<span class="expInfo">
+							<span class="increasedExp">0</span>
+							<span class="expLabel">_(result.label.exp)</span>
+						</span>
+						<span class="next">Lv60</span>
+					</div>
+					<div class="F-ProgressBar">
+						<div class="indicator" style="width: 12%;"></div>
+						<div class="indicator second" style="width: 12%;"></div>
+					</div>
+				</fieldset>
+				<div>
+					<div class="F-Button norm save withClickSound">
+						<span class="label">_(result.button.save)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button norm keep withClickSound" style="display: none;">
+						<span class="label">_(result.button.keep)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button norm close withClickSound">
+						<span class="label">_(result.button.close)</span>
+						<div class="hover"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Respawn-->
+		<div id="respawn" class="F-Window waiting" style="display: none;" data-drawing-bg="false">
+			<h2>_(respawn.promo)</h2>
+			<input class="inviteLink" type="text" readonly="readonly" value="">
+			<div class="buttonBar">
+				<div class="F-Button link">_(respawn.btn.copy_link.label)</div>
+				<div class="F-Button socialMedia fb"></div>
+				<div class="F-Button socialMedia tw"></div>
+			</div>
+			<hr>
+			<div class="killer">_(respawn.slayed_by) <span class="name"></span></div>
+			<div class="waiting statusDesc">_(respawn.countdown.not_ready) <span class="counter">0.9</span></div>
+			<div class="ready statusDesc">_(respawn.countdown.ready)</div>
+			<div class="F-Button respawn light withClickSound">
+				<span class="label">_(respawn.btn.respawn.label)</span>
+				<div class="hover"></div>
+			</div>
+		</div>
+
+		<!--Respawn Mini-->
+		<!--
+		<div id="respawnMini" class="waiting" style="display: none;">
+			<div class="F-Button green tiny respawn">_(respawnMini.respawn)</div>
+			<span class="ready statusDesc">_(respawnMini.status.ready)</span>
+			<span class="waiting statusDesc"> _(respawnMini.status.no_ready) <br> <span class="counter">0.9</span> </span>
+			<div class="F-Button spread"></div>
+		</div>
+		-->
+
+		<!-- Ingame Emotes -->
+		<div id="ingameEmotesDiv" class="popupWndContent popupWndFrameLight" style="display: none;">
+			<div class="infoScreenContent" id="ingameEmotesDivContent"></div>
+			<div id="emotesTimerDiv" style="display: none;"></div>
+		</div>
+
+		<!--Ingame Stats-->
+		<div id="rankInGame" class="ongoing start" style="display: none;">
+			<div class="vote">
+				<h2>
+					<span class="voteTitle">_(rankInGame.title.voteMap)</span>
+					<span class="ongoing">_(rankInGame.title.countdown.current)</span>
+					<span class="waiting">_(rankInGame.title.countdown.next)</span>
+					<span class="timeToNext"></span>
+				</h2>
+				<ul id="rankInGame_mapList" class="F-List">
+					<li class="F-ItemRenderer" data-tooltip-renderer="tooltipMap">
+						<div class="hover"></div>
+						<div class="checkbox"></div>
+						<div class="name">Bay</div>
+						<div class="voteLabel">_(rankInGame.title.voteLabel)</div>
+						<div class="voteValue">5</div>
+					</li>
+				</ul>
+			</div>
+			<div class="victory"></div>
+			<div class="rankArea">
+				<table class="normal">
+					<caption id="rankTableTitle"></caption>
+					<thead>
+						<tr>
+							<th class="name">_(rankInGame.thead.name)</th>
+							<th class="clan">_(rankInGame.thead.clan)</th>
+							<th class="score">_(rankInGame.thead.score)</th>
+							<th class="souls">_(rankInGame.thead.souls)</th>
+							<th class="kill">_(rankInGame.thead.kill)</th>
+							<th class="death">_(rankInGame.thead.death)</th>
+							<th class="muteCell">_(rankInGame.thead.mute)</th>
+						</tr>
+					</thead>
+					<tbody id="rankInGame_normalList" class="F-List"></tbody>
+				</table>
+				<table class="team">
+					<caption>_(rankInGame.title)</caption>
+					<thead>
+						<tr>
+							<th class="name">_(rankInGame.thead.name)</th>
+							<th class="clan">_(rankInGame.thead.clan)</th>
+							<th class="score">_(rankInGame.thead.score)</th>
+							<th class="souls">_(rankInGame.thead.souls)</th>
+							<th class="kill">_(rankInGame.thead.kill)</th>
+							<th class="death">_(rankInGame.thead.death)</th>
+							<th class="muteCell">_(rankInGame.thead.mute)</th>
+						</tr>
+					</thead>
+					<tbody class="redTeamSummary">
+						<tr>
+							<td colspan="6">
+								<span class="teamName"></span>
+								<span class="teamScore"></span>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tbody id="rankInGame_redList" class="F-List"></tbody>
+					<tbody class="blueTeamSummary">
+						<tr>
+							<td colspan="6">
+								<span class="teamName"></span>
+								<span class="teamScore"></span>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tbody id="rankInGame_blueList" class="F-List"></tbody>
+				</table>
+				<div class="topButtonBar">
+					<div class="F-Button tiny invite withClickSound">
+						<span class="label">_(rankInGame.button.invite)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button close ongoing withClickSound">
+						<span class="label"></span>
+						<div class="hover"></div>
+					</div>
+				</div>
+				<div class="F-Button gameCtrl green medium start spectate withClickSound">
+					<span class="label">_(rankInGame.button.spectate)</span>
+					<div class="hover"></div>
+				</div>
+				<div class="F-Button gameCtrl yellow medium start normal play withClickSound">
+					<span class="label">_(rankInGame.button.play)</span>
+					<div class="hover"></div>
+				</div>
+				<div class="F-Button gameCtrl red medium start team withClickSound">
+					<span class="label">_(rankInGame.button.join.red)</span>
+					<div class="hover"></div>
+				</div>
+				<div class="F-Button gameCtrl blue medium start team withClickSound">
+					<span class="label">_(rankInGame.button.join.blue)</span>
+					<div class="hover"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--Game Share-->
+		<div id="gameShare" class="F-Window light" data-modal="true" style="display: none;">
+			<h2 class="title">_(gameShare.title)</h2>
+			<div class="content">
+				<input class="inviteLink" type="text" readonly="readonly" value="" />
+				<div class="buttonBar">
+					<div class="F-Button link withClickSound">
+						<span class="label">_(gameShare.btn.copy_link.label)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button socialMedia fb withClickSound">
+						<span class="label"></span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button socialMedia tw withClickSound">
+						<span class="label"></span>
+						<div class="hover"></div>
+					</div>
+				</div>
+			</div>
+			<div class="F-Button close withClickSound newBorder">
+				<span class="label"></span>
+				<div class="hover"></div>
+			</div>
+			<div class="bg"></div>
+		</div>
+
+		<!--New Game Window-->
+		<div id="newGame" class="F-Window light ffa" data-modal="false" style="display: none;">
+			<div class="title ribbon">_(newGame.title)</div>
+			<div class="F-Button close"></div>
+			<div class="content">
+				<div class="row first">
+					<div class="item custom" id="customDiv">
+						<span class="icon"></span>
+						_(newGame.label.custom)
+						<div class="hover"></div>
+					</div>
+				</div>
+				<div class="row second">
+					<div class="item ranked">
+						1v1 Ranked
+						<span class="icon"></span>
+						<div class="hover"></div>
+					</div>
+					<div class="item ffa">
+						_(newGame.label.ffa)
+						<span class="icon"></span>
+						<div class="hover"></div>
+					</div>
+					<div class="item zombie">
+						_(newGame.label.zombie)
+						<span class="icon"></span>
+						<div class="hover"></div>
+					</div>
+					<div class="item team">
+						_(newGame.label.team)
+						<span class="icon"></span>
+						<div class="hover"></div>
+					</div>
+				</div>
+				<div class="row third">
+					<p class="zombie">_(newGame.desc.zombie)</p>
+					<p class="team">_(newGame.desc.team)</p>
+					<p class="ffa">
+						_(newGame.desc.ffa)
+					</p>
+					<p class="ranked">
+						_(newGame.desc.duel)
+					</p>
+				</div>
+				<div class="row fourth">
+					<div class="F-Button light zombie hasTooltip" data-game-mode="5">
+						<span class="label">_(newGame.button.infection)</span>
+						<div class="hover"></div>
+						<div class="standardTooltipContainer" style="left: 50%; right: auto;">
+							<div class="standardTooltip" style="left: -50%;">
+								<span></span>
+							</div>
+						</div>
+					</div>
+				<div class="F-Button light team hasTooltip" data-game-mode="2">
+					<span class="label">_(newGame.button.flag)</span>
+					<div class="hover"></div>
+					<div class="standardTooltipContainer" style="left: 50%; right: auto;">
+						<div class="standardTooltip" style="left: -50%;">
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="F-Button light team hasTooltip" data-game-mode="1">
+					<span class="label">_(newGame.button.team)</span>
+					<div class="hover"></div>
+					<div class="standardTooltipContainer" style="left: 50%; right: auto;">
+						<div class="standardTooltip" style="left: -50%;">
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="F-Button light ffa hasTooltip" data-game-mode="4">
+					<span class="label">_(newGame.button.normal)</span>
+					<div class="hover"></div>
+					<div class="standardTooltipContainer" style="left: 50%; right: auto;">
+						<div class="standardTooltip" style="left: -50%;">
+							<span></span>
+						</div>
+					</div>
+				</div>
+					<div class="F-Button light ranked hasTooltip" data-game-mode="3">
+						<span class="label">_(newGame.button.duel)</span>
+						<div class="hover"></div>
+						<div class="standardTooltipContainer" style="left: 50%; right: auto;">
+							<div class="standardTooltip" style="left: -50%;">
+								<span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg"></div>
+		</div>
+
+		<!--Clan Create-->
+		<div class="F-popUpLayer basic" id="clanCreateBG" style="display: none;">
+			<div class="modal"></div>
+			<div class="F-Window clanMain" id="clanMainCreate" data-modal="true">
+				<h2 class="title">_(clanMain.create.title)</h2>
+				<ul class="F-TabPage content" style="width: 530px; height: 420px;">
+					<li id="clanMain_create" class="F-TabSubPage withClickSound selected" style="z-index: 34;">
+						<div class="content clanForm" style="width: 530px; height: 338px;">
+							<div class="F-TextInput name" id="createClanName" data-placeholder="_(clanMain.create.placeholder.name)" data-max-length="12">
+								<input type="text" id="createClanNameInput" placeholder="_(clanMain.create.placeholder.name)" maxlength="12">
+							</div>
+							<div class="F-TextInput tag" id="createClanTag" data-placeholder="_(clanMain.create.placeholder.tag)" data-max-length="6">
+								<input type="text" placeholder="_(clanMain.create.placeholder.tag)" id="createClanTagInput" maxlength="6"></div>
+								<div class="F-TextInput description clanDescription" id="createClanDesc" data-placeholder="_(clanMain.create.placeholder.description)" data-multiline="true">
+									<textarea placeholder="_(clanMain.create.placeholder.description)" id="createClanDescTextarea"></textarea>
+								</div>
+								<div class="F-Button gold create withClickSound"><div class="label">
+									<span>_(clanMain.create.button.label)</span>
+									<div class="icon x16 gold"></div>
+									<span id="clanCreateGold" class="goldNumber">1000</span>
+								</div>
+								<div class="hover"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="F-Button close withClickSound">
+					<span class="label"></span>
+					<div class="hover"></div>
+				</div>
+				<div class="bg"></div>
+			</div>
+		</div>
+
+		<!--Clan-->
+		<div class="F-popUpLayer basic" id="clanBG" style="display: none;">
+			<div class="modal"></div>
+			<div class="F-Window clanMain" id="clanMain" data-modal="true">
+				<h2 class="title">_(clanMain.title)</h2>
+				<ul class="F-TabPage content" style="width: 530px; height: 420px;">
+					<li id="clanMain_mine" class="F-TabSubPage active withClickSound selected" style="z-index: 20;">
+						<h3 class="title newBorder" id="clanInfoButton">
+							<span class="label">_(clanMain.browse.info.button.info)</span>
+							<div class="hover"></div>
+						</h3>
+						<h3 class="title newBorder" id="clanMembersButton">
+							<span class="label">_(clanMain.browse.info.button.members)</span>
+							<div class="hover"></div>
+						</h3>
+						<h3 class="title newBorder" id="clanAppsButton">
+							<span class="label">_(clanMain.mine.operations.applications)</span>
+							<div class="hover"></div>
+						</h3>
+						<ul class="F-ViewStack content clanMain_mine" id="clanMainContent" style="width: 530px; height: 358px;">
+							<li id="clanmain_myinfo" class="subView selected">
+								<div class="clanInfo">
+									<div class="baseInfo">
+										<h4>
+											<span class="quote">[</span><span class="clanTag">TAG</span><span class="quote">]</span>
+											<span class="clanName">_(clanMain.create.placeholder.name)</span>
+										</h4>
+										<table>
+											<tbody>
+												<tr>
+													<th>_(clanMain.label.score)</th>
+													<td class="elo">200</td>
+													<th>_(clanMain.label.members)</th>
+													<td class="members membersCount">2</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<pre class="description clanDescription">...</pre>
+								</div>
+								<div class="buttonBar">
+									<div class="F-Button tiny join withClickSound" id="joinButton">
+										<span class="label">_(clanMain.browse.info.button.join)</span>
+										<div class="hover"></div>
+									</div>
+									<div class="F-Button tiny red leave withClickSound" id="leaveButton">
+										<span class="label">_(clanMain.mine.operations.leave)</span>
+										<div class="hover"></div>
+									</div>
+								</div>
+							</li>
+							<div id="clanSettingsButton" class="F-Button setting withClickSound" data-tooltip-data="_(clanMain.tooltip.setting)">
+								<span class="label"></span>
+								<div class="hover"></div>
+							</div>
+						</ul>
+
+						<ul id="editClanUL" style="display: none;">
+							<li class="subView clanForm">
+								<div class="F-Button back withClickSound" data-tooltip-data="_(clanMain.tooltip.back)">
+									<span class="label"></span>
+									<div class="hover"></div>
+								</div>
+								<div class="tag" id="editClanTag" data-placeholder="_(clanMain.create.placeholder.tag)"></div>
+								<div class="F-TextInput name" data-placeholder="_(clanMain.create.placeholder.name)" data-max-length="12">
+									<input type="text" id="editClanName" placeholder="_(clanMain.create.placeholder.name)" maxlength="12">
+								</div>
+								<div class="F-TextInput description clanDescription" data-placeholder="_(clanMain.create.placeholder.description)" data-multiline="true">
+									<textarea id="clanDescTextArea">...</textarea>
+								</div>
+								<div class="F-Button huge save withClickSound" id="editClanSave">
+									<span class="label">_(clanMain.mine.setting.save)</span>
+									<div class="hover"></div>
+								</div>
+							</li>
+						</ul>
+
+						<div class="content" id="myClan" style="width: 530px; height: 390px;">
+							<ul class="F-List" id="myClan_memberList">
+								<li class="F-ItemRenderer">
+									<div>
+										<h4 class="name">_(clanMain.template.player)</h4>
+										<div class="role">_(clanMain.template.member)</div>
+									</div>
+									<div class="F-Button info" onclick="showPlayerInfo(1);" data-tooltip-data="_(myClan.tooltip.profile)"></div>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<div class="F-Button close withClickSound">
+					<span class="label"></span>
+					<div class="hover"></div>
+				</div>
+				<div class="bg"></div>
+			</div>
+		</div>
+
+		<!--Clan Join-->
+		<div id="clanJoin" class="F-Window light" style="display: none;" data-modal="true">
+			<h2 class="title">_(clanJoin.title)</h2>
+			<div class="content">
+				<h3>
+					<span class="quote">[</span><span class="clanTag">TAG</span><span class="quote">]</span> 
+					<span class="clanName">_(clanMain.create.placeholder.name)</span>
+				</h3>
+				<div class="F-TextInput desc" data-multiline="true" id="clanAppTextField">
+					<textarea placeholder="">_(clanJoin.desc)</textarea>
+				</div>
+				<div class="buttonBar">
+					<div class="F-Button tiny cancel withClickSound">
+						<span class="label">_(clanJoin.button.cancel)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button tiny send withClickSound">
+						<span class="label">_(clanJoin.button.send)</span>
+						<div class="hover"></div>
+					</div>
+				</div>
+			</div>
+			<div class="bg"></div>
+		</div>
+
+		<!-- Emotes -->
+		<div id="emotes" class="F-Window" style="display: none;">
+			<div class="title">_(emotes.title)</div>
+			<div class="content"></div>
+			<div class="F-Button close"></div>
+			<div class="bg"></div>
+		</div>
+
+		<div id="buyEmote" class="F-Window" style="display: none;">
+			<div class="title">_(emotes.buy.title)</div>
+			<div class="content" style="text-align: center;">
+				<canvas class="hat" width="100" height="100"></canvas>
+				<p style="font-size: 30px; margin-bottom: 60px;">Penguin</p>
+				<button>_(emotes.buy.gem.example)</button>
+			</div>
+			<div class="F-Button close"></div>
+			<div class="bg"></div>
+		</div>
+
+		<!--Register / LogIn-->
+		<div id="popupWndContainer" class="popupBG" style="display: none;">
+			<div class="popupWndContent popupWndFrameTabbed" id="accDivInner">
+				<div class="popupWndStandardBg"></div>
+				<div class="popupWndTabbedViewContainer">
+
+					<div class="loginRegView" style="display: none;" id="tabReg">
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserName"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userNameTextInput">
+											<input class="standardTextInput" type="text" id="inputUserNameReg" size="10" style="font-size: 17px;">
+										</div>
+										<div class="standardTooltipContainer standardTooltipContainerOnTop" style="display: none; left: 50%; right: auto;">
+											<div class="standardTooltip" style="left: -50%;">
+												<span> _(account.views.signup.name.tooltip)</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserPass"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userPassTextInput">
+											<input class="standardTextInput" type="password" id="inputUserPassReg" size="10" style="font-size: 17px;">
+										</div>
+										<div class="standardTooltipContainer standardTooltipContainerOnTop" style="display: none; left: 50%; right: auto;">
+											<div class="standardTooltip" style="left: -50%;">
+												<span>_(account.views.signup.password.tooltip)</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserEmail"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userEmailTextInput">
+											<input class="standardTextInput" type="text" id="inputUserEmail" size="10" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="pixelated labelButton labelButtonLargeNormal userLoginRegBtn withClickSound" id="regSubmit">
+										<div class="label">_(account.views.signup.buttons.submit.label)</div>
+										<div class="hover"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="agreementTips" id="agreementTips">
+										_(account.views.signup.agreement.prefix)
+										<a class="pseudoLink withClickSound" onclick="window.toggleAGB();">_(account.views.signup.agreement.termname)</a>
+										_(account.views.signup.agreement.suffix)
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="loginRegView" style="display: none;" id="tabRecover">
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="agreementTips" id="recoverText">
+										_(account.recover.instructions)
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserEmail"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userEmailTextInput">
+											<input class="standardTextInput" type="text" id="inputUserEmailRecover" size="10" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px; height: 48px; margin-left: 172px;">
+							<input type="checkbox" id="recoverIsLegacy" />
+							<label for="recoverIsLegacy" class="checkboxLabel"><span class="spaceSpan"></span>_(account.recover.legacy.label)</label>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="pixelated labelButton labelButtonLargeNormal userLoginRegBtn withClickSound" id="recSubmit">
+										<div class="label">_(account.recover.submit.label)</div>
+										<div class="hover"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="agreementTips" id="recoverTips">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="loginRegView" id="tabLogin">
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserName"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userNameTextInput">
+											<input class="standardTextInput" type="text" id="inputUserName" size="10" placeholder="_(account.views.login.name.placeholder)" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserPass"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userPassTextInput">
+											<input class="standardTextInput" type="password" id="inputUserPass" size="10" placeholder="_(account.views.login.password.placeholder)" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px; height: 48px; margin-left: 172px;">
+							<input type="checkbox" id="stayLoggedIn" />
+							<label for="stayLoggedIn" class="checkboxLabel"><span class="spaceSpan"></span>_(account.views.login.stay_logged_in.label)</label>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div id="loginSubmit" class="pixelated labelButton labelButtonLargeNormal userLoginRegBtn withClickSound">
+										<div class="label">_(account.views.login.buttons.submit.label)</div>
+										<div class="hover"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="loginRegView" id="tabLegacy">
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserName"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userNameTextInput">
+											<input class="standardTextInput" type="text" id="inputLegacyName" size="10" placeholder="_(account.legacy.name.placeholder)" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserPass"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userPassTextInput">
+											<input class="standardTextInput" type="password" id="inputLegacyPass" size="10" placeholder="_(account.legacy.password.placeholder)" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px; display: none;" id="inputLegacyNewNameDiv">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div class="userInputRow">
+										<div class="standardTextInputIcon iconUserName"></div>
+										<div class="standardField standardFieldSkinStandard userLoginRegTextInput userNameTextInput">
+											<input class="standardTextInput" type="text" id="inputLegacyNewName" size="10" placeholder="_(account.legacy.new_name.placeholder)" style="font-size: 17px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div id="legacySubmit" class="pixelated labelButton labelButtonLargeNormal userLoginRegBtn withClickSound">
+										<div class="label">_(account.legacy.claim.label)</div>
+										<div class="hover"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mainLayoutTable" style="margin-bottom: 10px;">
+							<div style="display: table-row;">
+								<div class="mainLayoutCell">
+									<div id="legacyInfoDiv">
+										_(account.legacy.info)
+									</div>
+									<div id="legacyServerMsg"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="popupWndTabbedButtonContainer">
+					<div class="pixelated labelButton labelButtonStandardTabActivated withClickSound" id="switchLogin">
+						<div class="label">_(account.tabs.login.label)</div>
+						<div class="hover"></div>
+					</div>
+					<div class="pixelated labelButton labelButtonStandardTab withClickSound" id="switchReg">
+						<div class="label">_(account.tabs.signup.label)</div>
+						<div class="hover"></div>
+					</div>
+					<div class="pixelated labelButton labelButtonStandardTab withClickSound" id="switchRecover">
+						<div class="label">_(account.tabs.recover.label)</div>
+						<div class="hover"></div>
+					</div>
+					<div class="pixelated labelButton labelButtonStandardTab withClickSound" id="switchLegacy">
+						<div class="label">_(account.tabs.legacy.label)</div>
+						<div class="hover"></div>
+					</div>
+				</div>
+				<div class="popupWndCloseBtn pixelated withClickSound" id="loginCloseBtn">
+					<img src="imgs/main_ui/icon_close_tabbed.png">
+					<div class="hoverLight hoverLightNormal"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--Options-->
+		<div class="F-popUpLayer basic" id="popupBG" style="display: none;">
+			<div id="popupWndContainer" data-modal="false">
+				<div id="optionsScreen" class="popupWndWrapper">
+					<div class="popupWndMask"></div>
+					<div class="popupWndContent popupWndFrameStandard" id="realOptionsDiv">
+						<div class="popupWndStandardBg"></div>
+						<div class="popupWndTitleWrapper">
+							<div class="popupWndTitle">
+								<div class="popupWndTitleBg"></div>
+								<div class="popupWndTitleContent">_(options.title)</div>
+							</div>
+						</div>
+						<div class="popupWndViewContainer">
+							<div class="optionsView">
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="labelledContainer optionsRangeField">
+												<div class="widgetLabel">_(options.volume.label)</div>
+												<div class="widgetContainer">
+													<div>
+														<div>
+															<input class="clickableDuringGame" type="range" min="0" max="1" step="0.01" value="0.49" id="soundRange">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="labelledContainer optionsRangeField">
+												<div class="widgetLabel">_(options.minimap_size.label)</div>
+												<div class="widgetContainer">
+													<div>
+														<div>
+															<input class="clickableDuringGame" type="range" min="0.5" max="2" step="0.01" value="1.13" id="mapSize">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="lowEffectLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: none;" id="lowEffectsCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.graphic.label)</div>
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="noChatLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: none;" id="noChatCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.hide_chat.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="wpnBarNotClickableLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="wpnBarNotClickableCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.weaponsUnclickable.label)</div>
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="hideMinimapLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="hideMinimapCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.hide_minimap.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckboxExt withClickSound" id="yellowNamesLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: none;" id="yellowNamesCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.forcePlayerNameColor.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="showPingLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="showPingCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.show_ping.label)</div>
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="showFPSLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="showFPSCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.show_fps.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="hideFullscreenLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="hideFullscreenCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.hide_fullscreen_button.label)</div>
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckbox withClickSound" id="hideEmotesLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: block;" id="hideEmotesCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.hide_ingame_emotes_button.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="checkboxWrapper optionsCheckboxExt withClickSound" id="noPickupFlashLb">
+												<div class="checkboxIconWrapper">
+													<div class="checkboxIconSelected" style="display: none;" id="noPickupFlashCheckbox"></div>
+												</div>
+												<div class="checkboxLabel">_(options.no_flashing_on_pickup.label)</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="mainLayoutTable" style="margin-bottom: 10px;">
+									<div style="display: table-row;">
+										<div class="mainLayoutCell">
+											<div class="labelledContainer">
+
+												<div class="widgetLabel">_(options.language.label)</div>
+												<select id="langDropdown">
+													<option>1</option>
+													<option>2</option>
+												</select>
+												
+											</div>
+											<div class="labelledContainer">
+
+												<div class="widgetLabel">_(options.server.label)</div>
+												<select id="serverDropdown">
+													<option>1</option>
+													<option>2</option>
+												</select>
+
+											</div>
+										</div>
+										<div class="mainLayoutCell">
+											<div class="pixelated labelButton labelButtonHugeNormal withClickSound" id="optionsHotkeysButton">
+												<div class="label">_(options.btn_ctrl.label)</div>
+												<div class="hover"></div>
+											</div>
+											<div class="pixelated labelButton labelButtonHugeNormal withClickSound" id="optionsReplayButton">
+												<div class="label">_(options.btn_replay.label)</div>
+												<div class="hover"></div>
+											</div>
+											<div class="pixelated labelButton labelButtonHugeNormal withClickSound" id="optionsFullScreenButton">
+												<div class="label">_(options.btn_fullscreen.label) [F8]</div>
+												<div class="hover"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popupWndCloseBtn pixelated withClickSound newBorder" id="optionsCloseButton">
+							<img src="imgs/main_ui/icon_close_tabbed.png">
+							<div class="hoverLight hoverLightNormal" style="width: calc(26px); height: calc(28px); display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Change Nick-->
+		<div class="F-popUpLayer top" id="chaneNickBG" style="display: none;">
+			<div class="modal"></div>
+			<div id="changeNick" class="F-Prompt" data-modal="true">
+				<div class="title"></div>
+				<div class="content"></div>
+				<h2 class="titleText">_(changeNick.title)</h2>
+				<div class="nickBar">
+					<div class="F-TextInput">
+						<input type="text" placeholder="" maxlength="15">
+					</div>
+					<div class="dateLimit"></div>
+					<div class="tips">_(changeNick.tips)</div>
+				</div>
+				<div class="buttonBar">
+					<div class="F-Button green tiny no withClickSound">
+						<span class="label">_(prompt.btn_cancel.label)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button green tiny yes withClickSound">
+						<span class="label">_(prompt.btn_ok.label)</span>
+						<div class="hover"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="F-popUpLayer basic" id="popUpMainDiv" style="display: none;"></div>
+
+		<!--Confirm-->
+		<div id="confirmBG" class="F-popUpLayer top" style="display: none;">
+			<div class="modal"></div>
+			<div id="confirm" class="F-Prompt">
+				<h2 class="title" id="confirmTitle"></h2>
+				<div class="content" id="confirmContent"></div>
+				<div class="buttonBar">
+					<div class="F-Button green tiny no withClickSound" id="noButton">
+						<span class="label">_(prompt.btn_cancel.label)</span>
+						<div class="hover"></div>
+					</div>
+					<div class="F-Button green tiny yes withClickSound" id="yesButton">
+						<span class="label">_(prompt.btn_ok.label)</span>
+						<div class="hover"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="floatTipContainer floatTipTypeERROR" id="floatTipContainer">
+			<div class="floatTipIcon"></div>
+			<div class="floatTipContent" id="floatTipContent">_(floatTip.default)</div>
+		</div>
+
+		<div id="adContainer">
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px;" data-ad-client="ca-pub-4143651545213061" data-ad-slot="9083873145"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+
+		<div id ="menuButtonContainer" data-noclick="yes"></div>
+
+		<div id="friendsContainer">
+			<!-- Friends -->
+			<div id="friendsList" style="display: none;">
+				<div id="friendsListContent"></div>
+				<button id="friendListFriendsButton">
+					Friends
+					<span id="friendListFriendsButtonCount" style="display: none;">0</span>
+				</button>
+				<button id="friendListPendingButton" class="background">
+					Pending
+					<span id="friendListPendingButtonCount" style="display: none;">0</span>
+				</button>
+			</div>
+
+			<!-- Chat -->
+			<div id="chatDiv" style="display: none;">
+				<div id="chatDivContent">
+					<div id="chatDivTitle"></div>
+					<div id="chatDivContentInner"></div>
+					<input type="text" id="chatDivInput" maxlength="140" />
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="dist/client-bundle.js"></script>
+		
+	</body>
+	
+</html>
