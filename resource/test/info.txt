@@ -1,0 +1,12 @@
+Purpose
+=======
+Testing.
+
+Used Tools
+==========
+JS Formatter: Prettier - Code formatter in VSCode (12.4.0)
+
+Last Modified Dates of Official Resources
+=========================================
+dist/client-bundle.js - Thu, 09 Jul 2026 07:08:57 GMT
+index.html - Thu, 09 Jul 2026 07:08:54 GMT
