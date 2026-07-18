@@ -26,14 +26,20 @@ First, you will need to install a browser extension for override the original re
 5. Find "Resource Override" in there, and click the icon of 3-dots.
 6. Click on "Options"
 7. Now you can add the redirect/override rules depends on your need.
+8. Click on "Save Changes", after adding redirect/override rules.
 
 Find the custom resource urls you want to use in below.
 
 # List of Custom Resource URLs
 
+Redirect https://slay.one/dist/client-bundle.js to
+- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.3/resource/main/dist/client-bundle.js
+  - Auto change server when a specific server in invite link
+
 Redirect https://slay.one/css/homeUI.css to
 - https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.0/resource/main/css/homeUI.css
   - Brings back slayTV.
+
 
 # How can I contribute to this project?
 
