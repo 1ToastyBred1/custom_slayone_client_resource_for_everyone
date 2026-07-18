@@ -6278,6 +6278,8 @@
                       setTimeout(function () {
                         window.location.reload();
                       }, 250));
+                  } else if ("cancel" === btnName) {
+                    _serverDD.value = cserver_i.toString();
                   }
                   promptWnd.close();
                 },
@@ -25171,19 +25173,16 @@
           _forcedServerIndex = window.localStorage.getItem(
             "chooseServerOnStart",
           );
+        let isForcingServer = parseInt(_forcedServerIndex) in servers_1.SERVERS;
         window.localStorage.setItem("chooseServerOnStart", "-1");
-        for (
-          var _forcedServerIndexInt =
-              null !== _forcedServerIndex ? parseInt(_forcedServerIndex) : -1,
-            arr = window.location.search.substr(1).split("&"),
-            _i = 0,
-            arr_1 = arr;
-          _i < arr_1.length;
-          _i++
-        ) {
-          var el = arr_1[_i],
-            vals = el.split("=");
-          "game" === vals[0] && (_forcedGameID = parseInt(vals[1]));
+
+        for (var _forcedServerIndexInt = null !== _forcedServerIndex ? parseInt(_forcedServerIndex) : -1, arr = window.location.search.substr(1).split("&"), _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+            var el = arr_1[_i],
+                vals = el.split("=");
+
+            "server" === vals[0] && !isForcingServer && (_forcedServerIndexInt = parseInt(vals[1]));
+            "game" === vals[0] && (_forcedGameID = parseInt(vals[1]));
+
         }
         function networkInit() {
           for (var i = 0; i < servers_1.SERVERS.length; i++)
