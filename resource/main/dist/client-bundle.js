@@ -6278,8 +6278,6 @@
                       setTimeout(function () {
                         window.location.reload();
                       }, 250));
-                  } else if ("cancel" === btnName) {
-                    _serverDD.value = cserver_i.toString();
                   }
                   promptWnd.close();
                 },
