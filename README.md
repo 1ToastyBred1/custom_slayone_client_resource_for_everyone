@@ -33,11 +33,11 @@ Find the custom resource urls you want to use in below.
 # List of Custom Resource URLs
 
 Redirect https://slay.one/dist/client-bundle.js to
-- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.3/resource/main/dist/client-bundle.js
+- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone/resource/main/dist/client-bundle.js
   - Auto change server when a specific server in invite link
 
 Redirect https://slay.one/css/homeUI.css to
-- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone@v0.1.0/resource/main/css/homeUI.css
+- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone/resource/main/css/homeUI.css
   - Brings back slayTV.
 
 
