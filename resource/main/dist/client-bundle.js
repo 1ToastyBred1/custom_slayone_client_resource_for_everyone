@@ -5562,7 +5562,14 @@
                 abDef.attributes.push(0);
             }
           }
-          return build;
+          return (
+            (build[
+              _possibleActiveAbsForBotBuild[
+                Math.floor(Math.random() * _possibleActiveAbsForBotBuild.length)
+              ].id
+            ].lvl = 1),
+            build
+          );
         }),
           (exports.getDefaultZombieAbilityObj = function (abs, config) {
             for (
@@ -20079,7 +20086,7 @@
                 parentNode,
                 void 0,
                 "legacyIndicator",
-                "<span>â˜…</span><span>L</span>",
+                "<span>★</span><span>L</span>",
               ).title = "Legacy account");
             exports.playerProfileScreen.renderButtonSkin_(
               parentNode,
@@ -20475,22 +20482,22 @@
         exports.lang = {
           locale: null,
           supportedLocales: {
-            "ar-SA": "Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©",
+            "ar-SA": "العربية",
             "de-DE": "Deutsch",
             "en-US": "English",
-            "es-ES": "espaÃ±ol",
-            "fr-FR": "franÃ§ais",
+            "es-ES": "español",
+            "fr-FR": "français",
             "id-ID": "Bahasa Indonesia",
             "it-IT": "italiano",
-            "ja-JP": "æ—¥æœ¬èªž",
-            "ko-KR": "í•œêµ­ì–´",
+            "ja-JP": "日本語",
+            "ko-KR": "한국어",
             "pl-PL": "polski",
-            "pt-BR": "portuguÃªs(Brazil)",
-            "ru-RU": "Ñ€ÑƒÑÑÐºÐ¸Ð¹",
-            "th-TH": "à¹„à¸—à¸¢",
-            "tr-TR": "TÃ¼rkÃ§e",
-            "zh-TW": "ä¸­æ–‡(ç¹é«”)",
-            "zh-CN": "ä¸­æ–‡(ç®€ä½“)",
+            "pt-BR": "português(Brazil)",
+            "ru-RU": "русский",
+            "th-TH": "ไทย",
+            "tr-TR": "Türkçe",
+            "zh-TW": "中文(繁體)",
+            "zh-CN": "中文(简体)",
           },
           defaultLocale: "en-US",
           data: {},
@@ -27666,12 +27673,12 @@
               by: "Tio Sam",
             },
             {
-              name: "Mark77â™¡",
+              name: "Mark77♡",
               offset: 179,
               hatOnly: !1,
               legs: 99,
               quality: "Rare",
-              by: "ARK77 & Maraâ™¡",
+              by: "ARK77 & Mara♡",
             },
             {
               name: "Joan D'Arc",
