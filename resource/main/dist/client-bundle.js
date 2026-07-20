@@ -44594,4 +44594,4 @@
   }
   var __webpack_exports__ = __webpack_require__(9994);
 //# sourceMappingURL=client-bundle.js.map
-console.log("Loaded custom js resource");
+console.log("Loaded custom client-bundle.js (merged with official resource modfied at Mon, 20 Jul 2026 17:36:18 GMT)");
