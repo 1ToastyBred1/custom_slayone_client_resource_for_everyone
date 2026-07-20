@@ -33,13 +33,13 @@ Find the custom resource urls you want to use in below.
 # List of Custom Resource URLs
 
 Redirect https://slay.one/dist/client-bundle.js to
-- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone/resource/main/dist/client-bundle.js
+- https://flashxwx.github.io/custom_slayone_client_resource_for_everyone/resource/main/dist/client-bundle.js
   - Auto change server when a specific server in invite link
   - (For dev) Remove the anonymous function wrapping of all js resource, you can visit `__webpack_module_cache__` in console.
   - (For dev) Remove the feature that keeps making `mainUI.style.display = "none"` when in game.
 
 Redirect https://slay.one/css/homeUI.css to
-- https://cdn.jsdelivr.net/gh/flashxwx/custom_slayone_client_resource_for_everyone/resource/main/css/homeUI.css
+- https://flashxwx.github.io/custom_slayone_client_resource_for_everyone/resource/main/css/homeUI.css
   - Brings back slayTV.
 
 
