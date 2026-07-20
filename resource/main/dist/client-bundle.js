@@ -1,5 +1,5 @@
 /*! For license information please see client-bundle.js.LICENSE.txt */
-(() => {
+
   var __webpack_modules__ = {
       217: function (__unused_webpack_module, exports, __webpack_require__) {
         "use strict";
@@ -41138,7 +41138,7 @@
               (domMain.style.display = "none"));
           },
           showWindow: function () {
-            _showHomeWindow = !_hideHomeWindowForever;
+            domMain.style.display = "block";
           },
           refreshAbilitiesPanel: function () {
             domAbilities.refreshView();
@@ -41692,17 +41692,7 @@
               ("global" !== _activeChatChannel &&
                 "clan" !== _activeChatChannel) ||
               exports.homeScreen.requestOlderChatMessages(_activeChatChannel);
-          }),
-          setInterval(function () {
-            !_showHomeWindow ||
-            (null !== root_1.root.game && root_1.root.game.map !== map1_1.map1)
-              ? null !== domMain &&
-                "block" === domMain.style.display &&
-                (domMain.style.display = "none")
-              : null === domMain ||
-                ("none" !== domMain.style.display && domMain.style.display) ||
-                (domMain.style.display = "block");
-          }, 50));
+          }));
       },
       9288: (__unused_webpack_module, exports, __webpack_require__) => {
         "use strict";
@@ -44596,5 +44586,5 @@
     );
   }
   var __webpack_exports__ = __webpack_require__(9994);
-})();
 //# sourceMappingURL=client-bundle.js.map
+console.log("Loaded custom js resource");
