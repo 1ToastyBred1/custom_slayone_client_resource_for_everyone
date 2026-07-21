@@ -1,6 +1,12 @@
 /*! For license information please see client-bundle.js.LICENSE.txt */
+var c_homeUIElement = document.getElementById("homeUI");
+var c_homeMainWindowElement = document.getElementById("homeMainWindow");
+var c_friendsButtonElement = null;
+var c_socialChatInputElement = document.getElementById("globalChatInput");
+var c_hasSocialUICoveredInGame = false;
+var c_hasPressedCtrlRKey = false;
 
-  var __webpack_modules__ = {
+var __webpack_modules__ = {
       217: function (__unused_webpack_module, exports, __webpack_require__) {
         "use strict";
         var extendStatics,
@@ -6285,7 +6291,7 @@
                       setTimeout(function () {
                         window.location.reload();
                       }, 250));
-                  }  else if ("cancel" === btnName){
+                  } else if ("cancel" === btnName){
                     _serverDD.value = Network_1.Network.connectedServerIndex.toString();
                   }
                   promptWnd.close();
@@ -6777,7 +6783,7 @@
                 oldState = exports.Input.keys[key];
               if (
                 ((exports.Input.keys[key] = !0),
-                "inline" !== _chatInputDiv.style.display || key === KEY.ENTER)
+                ("inline" !== _chatInputDiv.style.display || key === KEY.ENTER) && !c_hasSocialUICoveredInGame)
               ) {
                 if (key === KEY.F7)
                   return (
@@ -6894,12 +6900,13 @@
                       )
                         root_1.root.game.interface_.hideUpgrades();
                       else if (key === KEY.ENTER)
-                        if ("inline" !== _chatInputDiv.style.display)
+                        if ("inline" !== _chatInputDiv.style.display) {
                           ((_chatInputDiv.style.display = "inline"),
                             (_chatLog.style.display = "inline"),
                             (_chatLogInner.scrollTop =
                               _chatLogInner.scrollHeight),
                             _chatInput.focus());
+                        }
                         else {
                           var msg = _chatInput.value;
                           (config_1.playerData.authLevel <
@@ -10257,7 +10264,7 @@
           (exports.getCurrentGameLink = function () {
             return null !== root_1.root.game &&
               root_1.root.game.map !== map1_1.map1
-              ? window.location.href +
+              ? "https://slay.one/" +
                   "?server=" +
                   Network_1.Network.connectedServerIndex +
                   "&game=" +
@@ -29840,7 +29847,7 @@
                 countIncomingRequests > 0 ? "" : "none"),
               null === _friendsButtonOnline)
             ) {
-              var btnFriends = document.getElementById("btnFriends");
+              var btnFriends = document.getElementById("btnFriends"); c_friendsButtonElement = btnFriends;
               null !== btnFriends &&
                 (((_friendsButtonOnline = document.createElement("div")).id =
                   "friendsButtonOnline"),
@@ -40777,7 +40784,6 @@
           _hideHomeWindowForever = !1,
           _showHomeWindow = !1,
           _isAltPressed = !1,
-          _activeChatChannel = "global",
           _chatMessages = { global: [], clan: [] },
           _chatHistoryState = {
             global: { loading: !1, hasMore: !0 },
@@ -40820,6 +40826,7 @@
             );
           };
         ((exports.homeScreen = {
+          activeChatChannel: "global",
           renderButtonChangeSkins_: function (parentNode) {
             var button = document.createElement("button");
             ((button.onclick = function () {
@@ -41146,6 +41153,9 @@
           },
           showWindow: function () {
             domMain.style.display = "block";
+            c_homeMainWindowElement.style.display = "block";
+            c_hasSocialUICoveredInGame = false;
+            //_showHomeWindow = !_hideHomeWindowForever;
           },
           refreshAbilitiesPanel: function () {
             domAbilities.refreshView();
@@ -41155,7 +41165,7 @@
                 config_1.playerData.authLevel >= Data_1.AUTH_LEVEL.PLAYER,
               hasClan = config_1.playerData.clanTag.length > 0;
             (hasClan ||
-              "clan" !== _activeChatChannel ||
+              "clan" !== exports.homeScreen.activeChatChannel ||
               exports.homeScreen.setActiveChatChannel("global"),
               (domGlobalChatTabClan.style.display =
                 loggedIn && hasClan ? "" : "none"),
@@ -41167,16 +41177,16 @@
               ? lang_1.lang.get("home.chat.input.placeholder", {
                   channel: activeFriend
                     ? activeFriend.name
-                    : _activeChatChannel,
+                    : exports.homeScreen.activeChatChannel,
                 })
               : lang_1.lang.get("home.chat.input.placeholder.locked")),
             domGlobalChatTabGlobal.classList.toggle(
               "active",
-              "global" === _activeChatChannel,
+              "global" === exports.homeScreen.activeChatChannel,
             ),
             domGlobalChatTabClan.classList.toggle(
               "active",
-              "clan" === _activeChatChannel,
+              "clan" === exports.homeScreen.activeChatChannel,
             ),
             _friendChats))
               exports.homeScreen.refreshFriendChatTab(_friendChats[id]);
@@ -41195,7 +41205,7 @@
               (_chatHistoryState[channel].loading = !1),
               void 0 !== hasMore &&
                 (_chatHistoryState[channel].hasMore = hasMore),
-              channel === _activeChatChannel)
+              channel === exports.homeScreen.activeChatChannel)
             ) {
               var oldScrollHeight = domGlobalChatMessages.scrollHeight,
                 oldScrollTop = domGlobalChatMessages.scrollTop;
@@ -41222,7 +41232,7 @@
                   domGlobalChatMessages.scrollHeight)
               );
             }
-            var messages = _chatMessages[_activeChatChannel];
+            var messages = _chatMessages[exports.homeScreen.activeChatChannel];
             if (0 === messages.length) {
               var div = document.createElement("div");
               return (
@@ -41245,7 +41255,7 @@
           appendGlobalChatMessage: function (msg, silent) {
             var channel = msg.channel || "global";
             if (
-              (_chatMessages[channel].push(msg), channel === _activeChatChannel)
+              (_chatMessages[channel].push(msg), channel === exports.homeScreen.activeChatChannel)
             ) {
               var shouldScroll =
                 domGlobalChatMessages.scrollTop +
@@ -41264,7 +41274,7 @@
             });
             void 0 !== msg &&
               ((msg.message = message),
-              channel === _activeChatChannel &&
+              channel === exports.homeScreen.activeChatChannel &&
                 exports.homeScreen.renderActiveChatMessages());
           },
           removeGlobalChatMessage: function (channel, id) {
@@ -41274,7 +41284,7 @@
               });
             -1 !== index &&
               (messages.splice(index, 1),
-              channel === _activeChatChannel &&
+              channel === exports.homeScreen.activeChatChannel &&
                 exports.homeScreen.renderActiveChatMessages());
           },
           appendGlobalChatMessageToDom: function (msg) {
@@ -41417,7 +41427,7 @@
           },
           setActiveChatChannel: function (channel) {
             ("clan" === channel && 0 === config_1.playerData.clanTag.length) ||
-              ((_activeChatChannel = channel),
+              ((exports.homeScreen.activeChatChannel = channel),
               exports.homeScreen.renderGlobalChat(),
               0 === _chatMessages[channel].length &&
                 exports.homeScreen.requestOlderChatMessages(channel));
@@ -41442,11 +41452,11 @@
           },
           getActiveFriendChatId: function () {
             if (
-              "string" != typeof _activeChatChannel ||
-              "friend:" !== _activeChatChannel.substr(0, 7)
+              "string" != typeof exports.homeScreen.activeChatChannel ||
+              "friend:" !== exports.homeScreen.activeChatChannel.substr(0, 7)
             )
               return null;
-            var id = parseInt(_activeChatChannel.substr(7));
+            var id = parseInt(exports.homeScreen.activeChatChannel.substr(7));
             return isNaN(id) ? null : id;
           },
           openFriendChatTab: function (id, name, content, activate) {
@@ -41498,7 +41508,7 @@
           activateFriendChat: function (id) {
             var friendChat = _friendChats[id];
             void 0 !== friendChat &&
-              ((_activeChatChannel = "friend:" + id),
+              ((exports.homeScreen.activeChatChannel = "friend:" + id),
               (friendChat.unread = 0),
               exports.homeScreen.refreshFriendChatTab(friendChat),
               exports.homeScreen.renderGlobalChat(),
@@ -41512,8 +41522,8 @@
               (friendChat.button.remove(),
               friendChat.content.remove(),
               delete _friendChats[id],
-              _activeChatChannel === "friend:" + id &&
-                ((_activeChatChannel = "global"),
+              exports.homeScreen.activeChatChannel === "friend:" + id &&
+                ((exports.homeScreen.activeChatChannel = "global"),
                 exports.homeScreen.renderGlobalChat()),
               window.dispatchEvent(
                 new CustomEvent("friendChatClosed", { detail: id }),
@@ -41528,7 +41538,7 @@
           refreshFriendChatTab: function (friendChat) {
             (friendChat.button.classList.toggle(
               "active",
-              _activeChatChannel === "friend:" + friendChat.id,
+              exports.homeScreen.activeChatChannel === "friend:" + friendChat.id,
             ),
               (friendChat.unreadSpan.innerText = friendChat.unread.toString()),
               (friendChat.unreadSpan.style.display =
@@ -41542,7 +41552,7 @@
             ((_chatMessages.clan = []),
               (_chatHistoryState.clan.loading = !1),
               (_chatHistoryState.clan.hasMore = !0),
-              (_activeChatChannel = "global"),
+              (exports.homeScreen.activeChatChannel = "global"),
               exports.homeScreen.renderGlobalChat());
           },
           render: function () {
@@ -41597,26 +41607,6 @@
               exports.homeScreen.showWindow());
           },
         }),
-          domGlobalChatInput.addEventListener("keypress", function (e) {
-            if (10 === e.which || 13 === e.which) {
-              var value = domGlobalChatInput.value.trim();
-              if (!(value.length <= 0)) {
-                var activeFriendId = exports.homeScreen.getActiveFriendChatId();
-                (null !== activeFriendId
-                  ? window.dispatchEvent(
-                      new CustomEvent("friendChatSend", {
-                        detail: { id: activeFriendId, message: value },
-                      }),
-                    )
-                  : window.dispatchEvent(
-                      new CustomEvent("globalChatSend", {
-                        detail: { channel: _activeChatChannel, message: value },
-                      }),
-                    ),
-                  (domGlobalChatInput.value = ""));
-              }
-            }
-          }),
           domGlobalChatInput.addEventListener("focus", function () {
             domGlobalChatInput.removeAttribute("readonly");
           }),
@@ -41696,9 +41686,9 @@
           }),
           (domGlobalChatMessages.onscroll = function () {
             domGlobalChatMessages.scrollTop > 50 ||
-              ("global" !== _activeChatChannel &&
-                "clan" !== _activeChatChannel) ||
-              exports.homeScreen.requestOlderChatMessages(_activeChatChannel);
+              ("global" !== exports.homeScreen.activeChatChannel &&
+                "clan" !== exports.homeScreen.activeChatChannel) ||
+              exports.homeScreen.requestOlderChatMessages(exports.homeScreen.activeChatChannel);
           }));
       },
       9288: (__unused_webpack_module, exports, __webpack_require__) => {
@@ -44594,4 +44584,66 @@
   }
   var __webpack_exports__ = __webpack_require__(9994);
 //# sourceMappingURL=client-bundle.js.map
-console.log("Loaded custom client-bundle.js (merged with official resource modfied at Mon, 20 Jul 2026 17:36:18 GMT)");
+
+var moduleRoot = __webpack_module_cache__[5572].exports.root;
+var map1 = __webpack_module_cache__[6409].exports.map1;
+var moduleHomeScreen = __webpack_module_cache__[9216].exports.homeScreen;
+
+var c_friendsButtonElement = document.getElementById("btnFriends");
+
+document.getElementById("slayTV").style.cssText = "display: block !important;";
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "ControlRight") {
+    c_hasPressedCtrlRKey = true;
+  }
+
+  if (
+    c_hasPressedCtrlRKey && event.code === "Slash"
+    && moduleRoot.game.map && moduleRoot.game.map !== map1
+  ) {
+    c_hasSocialUICoveredInGame = !c_hasSocialUICoveredInGame;
+
+    if (c_hasSocialUICoveredInGame) {
+      c_homeUIElement.style.display = "block";
+      c_homeMainWindowElement.style.display = "none";
+      c_friendsButtonElement.style.display = "block";
+    } else {
+      c_homeUIElement.style.display = "none";
+      c_friendsButtonElement.style.display = "none";
+    }
+  }
+});
+
+document.addEventListener("keyup", function(event) {
+  if (event.code === "ControlRight") {
+    c_hasPressedCtrlRKey = false;
+  }
+});
+
+c_socialChatInputElement.addEventListener("click", function(event) {
+  c_socialChatInputElement.focus();
+});
+
+c_socialChatInputElement.addEventListener("keypress", function (e) {
+  if (10 === e.which || 13 === e.which) {
+    var value = c_socialChatInputElement.value.trim();
+    if (!(value.length <= 0)) {
+      var activeFriendId = moduleHomeScreen.getActiveFriendChatId();
+      (null !== activeFriendId
+        ? window.dispatchEvent(
+            new CustomEvent("friendChatSend", {
+              detail: { id: activeFriendId, message: value },
+            }),
+          )
+        : window.dispatchEvent(
+            new CustomEvent("globalChatSend", {
+              detail: { channel: moduleHomeScreen.activeChatChannel, message: value },
+            }),
+          ),
+        (c_socialChatInputElement.value = ""));
+    }
+  }
+});
+
+console.log("Loaded custom resource from local.");
