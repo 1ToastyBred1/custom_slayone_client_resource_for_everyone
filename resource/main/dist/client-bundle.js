@@ -44585,9 +44585,9 @@ var __webpack_modules__ = {
   var __webpack_exports__ = __webpack_require__(9994);
 //# sourceMappingURL=client-bundle.js.map
 
-var moduleRoot = __webpack_module_cache__[5572].exports.root;
-var map1 = __webpack_module_cache__[6409].exports.map1;
-var moduleHomeScreen = __webpack_module_cache__[9216].exports.homeScreen;
+var moduleRoot = __webpack_require__(5572).root;
+var map1 = __webpack_require__(6409).map1;
+var moduleHomeScreen = __webpack_require__(9216).homeScreen;
 
 var c_friendsButtonElement = document.getElementById("btnFriends");
 
