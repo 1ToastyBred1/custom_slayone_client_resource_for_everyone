@@ -44646,4 +44646,93 @@ c_socialChatInputElement.addEventListener("keypress", function (e) {
   }
 });
 
+var moduleOptionsScreen = __webpack_require__(1337).optionsScreen;
+var moduleNetwork = __webpack_require__(7028).Network;
+
+var originalShowWindow = moduleOptionsScreen.showWindow;
+var originalOnLoginSuccess = moduleNetwork.onLoginSuccess;
+var originalSend = moduleNetwork.send;
+
+var serverOption = document.getElementsByClassName('labelledContainer')[3];
+var accountOption = serverOption.cloneNode(true);
+var accountDD = accountOption.children[1];
+var accountsStr = localStorage.getItem("accounts");
+var accounts = [];
+
+if (accountsStr && accountsStr.length > 0) {
+	accounts = JSON.parse(accountsStr);
+}
+
+var lastLoginName = "";
+var lastLoginPass = "";
+
+accountOption.children[1].id = 'accountDropdown';
+accountOption.children[0].innerText = 'ACCOUNT';
+
+serverOption.parentNode.appendChild(accountOption);
+
+
+function containsAccount(account) {
+	for (var i = 0; i < accounts.length; i++) {
+		if (accounts[i].name === account.name) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function renderAccountSwitch() {
+	for ( ; accountDD.firstChild !== null; ) {
+		accountDD.removeChild(accountDD.firstChild);
+	}
+	
+	var val = -1;
+	
+	for (var i = 0; i < accounts.length; i++) {
+		var option = document.createElement("option");
+		option.innerText = accounts[i].name;
+		option.value = i,
+		accountDD.appendChild(option);
+		
+		if (accounts[i].name === lastLoginName) {
+			val = i;
+		}
+	}
+	accountDD.value = val;
+}
+
+accountDD.onchange = function() {
+	var account = accounts[accountDD.value];
+	
+	moduleNetwork.send("logout");
+	moduleNetwork.send(["login", account.name, account.password].join('$'));
+	
+	moduleOptionsScreen.hideWindow();
+}
+
+moduleNetwork.send = function(msg) {
+	var arr = msg.split('$');
+	if (arr[0] === "login") {
+		lastLoginName = arr[1];
+		lastLoginPass = arr[2];
+	}
+	
+	originalSend.call(this, msg);
+}
+
+moduleNetwork.onLoginSuccess = function() {
+	var account = { name: lastLoginName, password: lastLoginPass };
+	if (!containsAccount(account)) {
+		accounts.push(account);
+		localStorage.setItem("accounts", JSON.stringify(accounts));
+	}
+	
+	originalOnLoginSuccess.call(this);
+}
+
+moduleOptionsScreen.showWindow = function() {
+	renderAccountSwitch();
+	originalShowWindow.call(this);
+}
+                        
 console.log("Loaded custom resource from local.");
