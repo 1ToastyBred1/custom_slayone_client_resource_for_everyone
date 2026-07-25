@@ -44675,10 +44675,10 @@ serverOption.parentNode.appendChild(accountOption);
 function containsAccount(account) {
 	for (var i = 0; i < accounts.length; i++) {
 		if (accounts[i].name === account.name) {
-			return true;
+			return i;
 		}
 	}
-	return false;
+	return -1;
 }
 
 function renderAccountSwitch() {
@@ -44707,7 +44707,7 @@ accountDD.onchange = function() {
 	moduleNetwork.send("logout");
 	moduleNetwork.send(["login", account.name, account.password].join('$'));
 	
-	moduleOptionsScreen.hideWindow();
+	//moduleOptionsScreen.hideWindow();
 }
 
 moduleNetwork.send = function(msg) {
@@ -44722,13 +44722,38 @@ moduleNetwork.send = function(msg) {
 
 moduleNetwork.onLoginSuccess = function() {
 	var account = { name: lastLoginName, password: lastLoginPass };
-	if (!containsAccount(account)) {
-		accounts.push(account);
-		localStorage.setItem("accounts", JSON.stringify(accounts));
+	var prevAccStr = JSON.stringify(accounts);
+	var accStr = prevAccStr;
+	var i = containsAccount(account);
+	
+	if (i === -1) {
+		accounts.push(account); 
+		accStr = JSON.stringify(accounts);
 	}
+	else accounts[i] = account;
+	
+	var accStr = JSON.stringify(accounts);
+		
+	if (prevAccStr !== accStr)
+		localStorage.setItem("accounts", JSON.stringify(accounts));
 	
 	originalOnLoginSuccess.call(this);
 }
+
+document.addEventListener('keydown', function(event) {
+	var popupBackground = document.getElementById("popupBG");
+	
+    if (event.key === 'Delete' && event.ctrlKey && !popupBackground.style.display) {
+		if (accountDD.value !== -1) {
+			accounts.splice(accountDD.value, 1);
+			accountDD.remove(accountDD.value);
+			accountDD.value = -1;
+			
+			localStorage.setItem("accounts", JSON.stringify(accounts));
+		}
+    }
+	
+});
 
 moduleOptionsScreen.showWindow = function() {
 	renderAccountSwitch();
